@@ -724,6 +724,68 @@ const short temptable_20[][2] PROGMEM = {
 };
 #endif
 
+// MGS: This thermistor is an addition by MGS Thermistor available from reichelt.de: NTC 100K 1,0
+#if (THERMISTORHEATER_0 == 40) || (THERMISTORHEATER_1 == 40) || (THERMISTORHEATER_2 == 40) || (THERMISTORBED == 40) //100k bed thermistor
+//100k Measurement specialities G100K4000 Radial Glass Thermistor
+// Thermistor lookup table for Marlin
+// ./createTemperatureLookupMarlin.py --rp=4700 --t1=25.0:100000.0 --t2=150.0:1766.0 --t3=250.0:255.0 --num-temps=51
+// Steinhart-Hart Coefficients: a=0.000662315795747223, b=0.000222910461652261, c=8.21417915297868e-08 
+// Theoretical limits of termistor: -45.42 to 724.35 degC
+const short temptable_40[][2] PROGMEM = {
+    { (short) (  52.70 * OVERSAMPLENR ),  250 }, // v=0.257	r=255.000	res=1.248 degC/count 	top rating 250C
+    { (short) (  56.84 * OVERSAMPLENR ),  245 }, // v=0.278	r=276.236	res=1.142 degC/count
+    { (short) (  61.38 * OVERSAMPLENR ),  240 }, // v=0.300	r=299.684	res=1.044 degC/count
+    { (short) (  66.35 * OVERSAMPLENR ),  235 }, // v=0.324	r=325.618	res=0.954 degC/count
+    { (short) (  71.79 * OVERSAMPLENR ),  230 }, // v=0.351	r=354.348	res=0.871 degC/count
+    { (short) (  77.76 * OVERSAMPLENR ),  225 }, // v=0.380	r=386.233	res=0.794 degC/count
+    { (short) (  84.31 * OVERSAMPLENR ),  220 }, // v=0.412	r=421.682	res=0.724 degC/count
+    { (short) (  91.50 * OVERSAMPLENR ),  215 }, // v=0.447	r=461.166	res=0.660 degC/count
+    { (short) (  99.39 * OVERSAMPLENR ),  210 }, // v=0.485	r=505.229	res=0.601 degC/count
+    { (short) ( 108.06 * OVERSAMPLENR ),  205 }, // v=0.528	r=554.496	res=0.548 degC/count
+    { (short) ( 117.58 * OVERSAMPLENR ),  200 }, // v=0.574	r=609.693	res=0.499 degC/count
+    { (short) ( 128.04 * OVERSAMPLENR ),  195 }, // v=0.625	r=671.660	res=0.455 degC/count
+    { (short) ( 139.52 * OVERSAMPLENR ),  190 }, // v=0.681	r=741.374	res=0.414 degC/count
+    { (short) ( 152.11 * OVERSAMPLENR ),  185 }, // v=0.743	r=819.976	res=0.378 degC/count
+    { (short) ( 165.92 * OVERSAMPLENR ),  180 }, // v=0.810	r=908.795	res=0.345 degC/count
+    { (short) ( 181.04 * OVERSAMPLENR ),  175 }, // v=0.884	r=1009.391	res=0.315 degC/count
+    { (short) ( 197.57 * OVERSAMPLENR ),  170 }, // v=0.965	r=1123.596	res=0.289 degC/count
+    { (short) ( 215.61 * OVERSAMPLENR ),  165 }, // v=1.053	r=1253.566	res=0.265 degC/count
+    { (short) ( 235.26 * OVERSAMPLENR ),  160 }, // v=1.149	r=1401.850	res=0.244 degC/count
+    { (short) ( 256.59 * OVERSAMPLENR ),  155 }, // v=1.253	r=1571.466	res=0.225 degC/count
+    { (short) ( 279.68 * OVERSAMPLENR ),  150 }, // v=1.366	r=1766.000	res=0.208 degC/count
+    { (short) ( 304.57 * OVERSAMPLENR ),  145 }, // v=1.487	r=1989.726	res=0.193 degC/count
+    { (short) ( 331.29 * OVERSAMPLENR ),  140 }, // v=1.618	r=2247.754	res=0.181 degC/count
+    { (short) ( 359.82 * OVERSAMPLENR ),  135 }, // v=1.757	r=2546.214	res=0.170 degC/count
+    { (short) ( 390.11 * OVERSAMPLENR ),  130 }, // v=1.905	r=2892.481	res=0.160 degC/count
+    { (short) ( 422.06 * OVERSAMPLENR ),  125 }, // v=2.061	r=3295.463	res=0.153 degC/count
+    { (short) ( 455.51 * OVERSAMPLENR ),  120 }, // v=2.224	r=3765.957	res=0.146 degC/count
+    { (short) ( 490.26 * OVERSAMPLENR ),  115 }, // v=2.394	r=4317.096	res=0.142 degC/count
+    { (short) ( 526.03 * OVERSAMPLENR ),  110 }, // v=2.569	r=4964.915	res=0.138 degC/count
+    { (short) ( 562.52 * OVERSAMPLENR ),  105 }, // v=2.747	r=5729.072	res=0.136 degC/count
+    { (short) ( 599.36 * OVERSAMPLENR ),  100 }, // v=2.927	r=6633.758	res=0.136 degC/count
+    { (short) ( 636.15 * OVERSAMPLENR ),   95 }, // v=3.106	r=7708.871	res=0.137 degC/count
+    { (short) ( 672.48 * OVERSAMPLENR ),   90 }, // v=3.284	r=8991.521	res=0.139 degC/count
+    { (short) ( 707.95 * OVERSAMPLENR ),   85 }, // v=3.457	r=10527.972	res=0.143 degC/count
+    { (short) ( 742.16 * OVERSAMPLENR ),   80 }, // v=3.624	r=12376.164	res=0.150 degC/count
+    { (short) ( 774.75 * OVERSAMPLENR ),   75 }, // v=3.783	r=14609.008	res=0.158 degC/count
+    { (short) ( 805.42 * OVERSAMPLENR ),   70 }, // v=3.933	r=17318.700	res=0.169 degC/count
+    { (short) ( 833.94 * OVERSAMPLENR ),   65 }, // v=4.072	r=20622.413	res=0.183 degC/count
+    { (short) ( 860.13 * OVERSAMPLENR ),   60 }, // v=4.200	r=24669.848	res=0.200 degC/count
+    { (short) ( 883.90 * OVERSAMPLENR ),   55 }, // v=4.316	r=29653.305	res=0.222 degC/count
+    { (short) ( 905.23 * OVERSAMPLENR ),   50 }, // v=4.420	r=35821.187	res=0.249 degC/count
+    { (short) ( 924.14 * OVERSAMPLENR ),   45 }, // v=4.512	r=43496.246	res=0.283 degC/count
+    { (short) ( 940.73 * OVERSAMPLENR ),   40 }, // v=4.593	r=53100.372	res=0.325 degC/count
+    { (short) ( 955.14 * OVERSAMPLENR ),   35 }, // v=4.664	r=65188.497	res=0.376 degC/count
+    { (short) ( 967.51 * OVERSAMPLENR ),   30 }, // v=4.724	r=80495.300	res=0.441 degC/count
+    { (short) ( 978.03 * OVERSAMPLENR ),   25 }, // v=4.776	r=100000.000	res=0.522 degC/count
+    { (short) ( 986.90 * OVERSAMPLENR ),   20 }, // v=4.819	r=125016.901	res=0.624 degC/count
+    { (short) ( 994.30 * OVERSAMPLENR ),   15 }, // v=4.855	r=157322.919	res=0.754 degC/count
+    { (short) (1000.41 * OVERSAMPLENR ),   10 }, // v=4.885	r=199338.611	res=0.920 degC/count
+    { (short) (1005.42 * OVERSAMPLENR ),    5 }, // v=4.909	r=254387.318	res=1.134 degC/count
+    { (short) (1009.49 * OVERSAMPLENR ),    0 }  // v=4.929	r=327069.301	res=1.413 degC/count
+};
+#endif
+
 #if (THERMISTORHEATER_0 == 51) || (THERMISTORHEATER_1 == 51) || (THERMISTORHEATER_2 == 51) || (THERMISTORBED == 51)
 // 100k EPCOS (WITH 1kohm RESISTOR FOR PULLUP, R9 ON SANGUINOLOLU! NOT FOR 4.7kohm PULLUP! THIS IS NOT NORMAL!)
 // Verified by linagee.

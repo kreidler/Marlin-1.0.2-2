@@ -154,6 +154,7 @@ static void lcd_implementation_init()
 
     u8g.drawBitmapP(offx, offy, START_BMPBYTEWIDTH, START_BMPHEIGHT, start_bmp);
 
+    u8g.setFont(u8g_font_6x10_marlin);
     #ifndef STRING_SPLASH_LINE2
       u8g.drawStr(txt1X, u8g.getHeight() - DOG_CHAR_HEIGHT, STRING_SPLASH_LINE1);
     #else

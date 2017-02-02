@@ -383,9 +383,9 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 // Travel limits after homing
 #define X_MAX_POS 100			// MGS taken from nopheads github
 #define X_MIN_POS -100          // were 205,0,205,0,200,0
-#define Y_MAX_POS 100           // -100 und 100 jeweils für X und Y
+#define Y_MAX_POS 100           // -100 and 100 for X and Y
 #define Y_MIN_POS -100
-#define Z_MAX_POS (MANUAL_Z_HOME_POS - 0.1) // MGS similar to Nophead
+#define Z_MAX_POS (Z_HEIGHT_MM - 0.1) // MGS similar to Nophead
 #define Z_MIN_POS -0.5			// -0.5 can avoid backlash if started with z<0
 
 #define X_MAX_LENGTH (X_MAX_POS - X_MIN_POS)

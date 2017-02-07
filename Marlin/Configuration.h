@@ -140,7 +140,7 @@
 #define MAX_REDUNDANT_TEMP_SENSOR_DIFF 10
 
 // Actual temperature must be close to target for this long before M109 returns success
-#define TEMP_RESIDENCY_TIME 60  // (seconds)                                                              // MGS taken from nopheads github was 10
+#define TEMP_RESIDENCY_TIME 30  // (seconds)                                                              // MGS nopheads was 60 origin was 10
 #define TEMP_HYSTERESIS 5       // (degC) range of +/- temperatures considered "close" to the target one  // MGS taken from nopheads github was 3
 #define TEMP_WINDOW     1       // (degC) Window around target to start the residency timer x degC early.
 
@@ -569,9 +569,9 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 #define EEPROM_CHITCHAT       // MGS taken from neildarlows github was off
 
 // Preheat Constants
-#define PLA_PREHEAT_HOTEND_TEMP 205 // MGS was 180
+#define PLA_PREHEAT_HOTEND_TEMP 210 // MGS was 180
 #define PLA_PREHEAT_HPB_TEMP 55		// MGS was 70
-#define PLA_PREHEAT_FAN_SPEED 255   // Insert Value between 0 and 255
+#define PLA_PREHEAT_FAN_SPEED 0   // Insert Value between 0 and 255 - MGS was 255
 
 #define ABS_PREHEAT_HOTEND_TEMP 240
 #define ABS_PREHEAT_HPB_TEMP 110    // MGS taken from neildarlows github was 100

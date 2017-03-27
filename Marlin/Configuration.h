@@ -2,7 +2,8 @@
 #define CONFIGURATION_H
 
 // Mendel90 Z-axis height adjustment
-#define Z_HEIGHT_MM 192.2                               // MGS taken from neildarlows github 203 - 9.5 for e3D hotend and fine tuned
+//#define Z_HEIGHT_MM 192.2                               // MGS taken from neildarlows github 203 - 9.5 for e3D hotend and fine tuned
+#define Z_HEIGHT_MM 199.05								// MGS update due to new bed
 // default settings - MGS addition to avoid use of a pocket calculator
 #define STEPS_PER_REV 200
 #define BELT_PITCH 2.5
@@ -10,8 +11,10 @@
 #define PULLEY_THEETH 16
 #define THREADED_ROD_PITCH 1.0
 
+// #define X_CORRECTION 0.996784 // PLA
+// #define Y_CORRECTION 0.998277 // PLA
 #define X_CORRECTION 1
-#define Y_CORRECTION 1.001565
+#define Y_CORRECTION 1
 #define Z_CORRECTION 0.998225
 
 // Mendel90 hobbed bolt and 39:11 Wade's gears
@@ -133,7 +136,7 @@
 #define TEMP_SENSOR_0 5    // MGS set to 5
 #define TEMP_SENSOR_1 0    // MGS
 #define TEMP_SENSOR_2 0
-#define TEMP_SENSOR_BED 40  // MGS set to 40
+#define TEMP_SENSOR_BED 1  // MGS set to 40 -> new 24V Kapton Bed = 60
 
 // This makes temp sensor 1 a redundant sensor for sensor 0. If the temperatures difference between these sensors is to high the print will be aborted.
 //#define TEMP_SENSOR_1_AS_REDUNDANT
@@ -251,9 +254,19 @@
 //    #define  DEFAULT_bedKi 24.34
 //    #define  DEFAULT_bedKd 963.26
 //from pidautotune for 110°C
-    #define  DEFAULT_bedKp 186.20
-    #define  DEFAULT_bedKi 9.87
-    #define  DEFAULT_bedKd 878.59
+//    #define  DEFAULT_bedKp 186.20
+//    #define  DEFAULT_bedKi 9.87
+//    #define  DEFAULT_bedKd 878.59
+
+//24v Kapton bed into 4mm aluminium plate MGS new
+//from pidautotune for 60°C old data before insulation different PTC
+//    #define  DEFAULT_bedKp 69.85
+//    #define  DEFAULT_bedKi 12.36
+//    #define  DEFAULT_bedKd 98.70
+//from pidautotune for 110°C
+    #define  DEFAULT_bedKp 130.38
+    #define  DEFAULT_bedKi 25.67
+    #define  DEFAULT_bedKd 165.55
 
 // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -383,8 +396,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 // Travel limits after homing
 #define X_MAX_POS 100			// MGS taken from nopheads github
 #define X_MIN_POS -100          // were 205,0,205,0,200,0
-#define Y_MAX_POS 100           // -100 and 100 for X and Y
-#define Y_MIN_POS -100
+#define Y_MAX_POS 101           // -100 and 100 for X and Y
+#define Y_MIN_POS -101
 #define Z_MAX_POS (Z_HEIGHT_MM - 0.1) // MGS similar to Nophead
 #define Z_MIN_POS -0.5			// -0.5 can avoid backlash if started with z<0
 
@@ -574,7 +587,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 #define PLA_PREHEAT_FAN_SPEED 0   // Insert Value between 0 and 255 - MGS was 255
 
 #define ABS_PREHEAT_HOTEND_TEMP 240
-#define ABS_PREHEAT_HPB_TEMP 110    // MGS taken from neildarlows github was 100
+#define ABS_PREHEAT_HPB_TEMP 115    // MGS was 100
 #define ABS_PREHEAT_FAN_SPEED 0   // Insert Value between 0 and 255 - MGS was 255
 
 //LCD and SD support

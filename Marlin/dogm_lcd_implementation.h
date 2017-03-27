@@ -277,7 +277,7 @@ static void lcd_implementation_status_screen()
  
  
  // X, Y, Z-Coordinates
- u8g.setFont(FONT_STATUSMENU);
+ /*u8g.setFont(FONT_STATUSMENU);
  u8g.drawBox(0,29,128,10);
  u8g.setColorIndex(0);	// white on black
  u8g.setPrintPos(2,37);
@@ -297,6 +297,24 @@ static void lcd_implementation_status_screen()
  u8g.drawPixel(89,33);
  u8g.drawPixel(89,35);
  u8g.setPrintPos(91,37);
+ u8g.print(ftostr31(current_position[Z_AXIS]));
+ u8g.setColorIndex(1);	// black on white
+*/
+// uppper section completely adjusted to fit coordinates for bed at 0,0 MGS
+ u8g.setFont(FONT_STATUSMENU);
+ u8g.drawBox(0,29,128,10);
+ u8g.setColorIndex(0);	// white on black
+ u8g.setPrintPos(1,37);
+ u8g.print("X");
+ u8g.setPrintPos(7,37);
+ u8g.print(ftostr31(current_position[X_AXIS]));
+ u8g.setPrintPos(43,37);
+ lcd_printPGM(PSTR("Y"));
+ u8g.setPrintPos(49,37);
+ u8g.print(ftostr31(current_position[Y_AXIS]));
+ u8g.setPrintPos(86,37);
+ u8g.print("Z");
+ u8g.setPrintPos(92,37);
  u8g.print(ftostr31(current_position[Z_AXIS]));
  u8g.setColorIndex(1);	// black on white
  

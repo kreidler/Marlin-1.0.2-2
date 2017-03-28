@@ -117,7 +117,7 @@ static void lcd_implementation_init()
 	u8g.setRot270();	// Rotate screen by 270°
 #endif
 
-   
+/*   
 	u8g.firstPage();
 	do {
 			// RepRap init bmp
@@ -138,6 +138,31 @@ static void lcd_implementation_init()
 			u8g.drawStr90(92,57,"8");
 			u8g.drawStr(100,61,"glib");
 	   } while( u8g.nextPage() );
+*/
+// Show splashscreen MGS
+  int offx = (u8g.getWidth() - START_BMPWIDTH) / 2;
+  #ifdef START_BMPHIGH
+    int offy = 0;
+  #else
+    int offy = DOG_CHAR_HEIGHT;
+  #endif
+
+  int txt1X = (u8g.getWidth() - (sizeof(STRING_SPLASH_LINE1) - 1)*DOG_CHAR_WIDTH) / 2;
+
+	u8g.firstPage();
+	do {
+
+    u8g.drawBitmapP(offx, offy, START_BMPBYTEWIDTH, START_BMPHEIGHT, start_bmp);
+
+    u8g.setFont(u8g_font_6x10_marlin);
+    #ifndef STRING_SPLASH_LINE2
+      u8g.drawStr(txt1X, u8g.getHeight() - DOG_CHAR_HEIGHT, STRING_SPLASH_LINE1);
+    #else
+      int txt2X = (u8g.getWidth() - (sizeof(STRING_SPLASH_LINE2) - 1)*DOG_CHAR_WIDTH) / 2;
+      u8g.drawStr(txt1X, u8g.getHeight() - DOG_CHAR_HEIGHT*3/2, STRING_SPLASH_LINE1);
+      u8g.drawStr(txt2X, u8g.getHeight() - DOG_CHAR_HEIGHT*1/2, STRING_SPLASH_LINE2);
+    #endif
+	} while(u8g.nextPage());
 }
 
 static void lcd_implementation_clear()
@@ -252,7 +277,7 @@ static void lcd_implementation_status_screen()
  
  
  // X, Y, Z-Coordinates
- u8g.setFont(FONT_STATUSMENU);
+ /*u8g.setFont(FONT_STATUSMENU);
  u8g.drawBox(0,29,128,10);
  u8g.setColorIndex(0);	// white on black
  u8g.setPrintPos(2,37);
@@ -272,6 +297,24 @@ static void lcd_implementation_status_screen()
  u8g.drawPixel(89,33);
  u8g.drawPixel(89,35);
  u8g.setPrintPos(91,37);
+ u8g.print(ftostr31(current_position[Z_AXIS]));
+ u8g.setColorIndex(1);	// black on white
+*/
+// uppper section completely adjusted to fit coordinates for bed at 0,0 MGS
+ u8g.setFont(FONT_STATUSMENU);
+ u8g.drawBox(0,29,128,10);
+ u8g.setColorIndex(0);	// white on black
+ u8g.setPrintPos(1,37);
+ u8g.print("X");
+ u8g.setPrintPos(7,37);
+ u8g.print(ftostr31(current_position[X_AXIS]));
+ u8g.setPrintPos(43,37);
+ lcd_printPGM(PSTR("Y"));
+ u8g.setPrintPos(49,37);
+ u8g.print(ftostr31(current_position[Y_AXIS]));
+ u8g.setPrintPos(86,37);
+ u8g.print("Z");
+ u8g.setPrintPos(92,37);
  u8g.print(ftostr31(current_position[Z_AXIS]));
  u8g.setColorIndex(1);	// black on white
  

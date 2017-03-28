@@ -264,11 +264,11 @@ static void lcd_status_screen()
     if (current_click)
     {
         lcd_goto_menu(lcd_main_menu);
-        lcd_implementation_init( // to maybe revive the LCD if static electricity killed it.
+/*        lcd_implementation_init( // to maybe revive the LCD if static electricity killed it.
           #if defined(LCD_PROGRESS_BAR) && defined(SDSUPPORT)
             currentMenu == lcd_status_screen
           #endif
-        );
+        ); // removed this section to avoid the splash screeen be visible every time entering or leaving the status screen */ 
         #ifdef FILAMENT_LCD_DISPLAY
           message_millis = millis();  // get status message to show up for a while
         #endif
@@ -749,7 +749,7 @@ static void lcd_control_menu()
 
 #ifdef DOGLCD
 //    MENU_ITEM_EDIT(int3, MSG_CONTRAST, &lcd_contrast, 0, 63);
-    MENU_ITEM(submenu, MSG_CONTRAST, lcd_set_contrast);
+//    MENU_ITEM(submenu, MSG_CONTRAST, lcd_set_contrast); // contrast change via pot only - MGS
 #endif
 #ifdef FWRETRACT
     MENU_ITEM(submenu, MSG_RETRACT, lcd_control_retract_menu);

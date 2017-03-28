@@ -769,10 +769,10 @@
       #define LCD_PINS_D7 29
 
       #ifdef REPRAP_DISCOUNT_SMART_CONTROLLER
-        #define BEEPER 37
+		#define BEEPER -1		// MGS taken from toms youtube videos was 37 now quiet
 
-        #define BTN_EN1 31
-        #define BTN_EN2 33
+		#define BTN_EN1 33		// MGS taken from toms youtube videos was 31
+		#define BTN_EN2 31		// MGS taken from toms youtube videos was 33
         #define BTN_ENC 35
 
         #define SDCARDDETECT 49
